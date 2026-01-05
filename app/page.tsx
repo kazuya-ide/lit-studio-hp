@@ -1,14 +1,17 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import Hero3D_StoryScroll from "./components/Hero3D_StoryScroll";
 import AnimatedText from "./components/AnimatedText";
 import ScrollReveal from "./components/ScrollReveal";
 
 export default function HomePage() {
+  const pathname = usePathname();
+
   return (
-    <main className="bg-black text-white font-sans overflow-x-hidden overflow-y-auto scroll-smooth">
+    <main className="bg-black text-white font-sans overflow-x-hidden scroll-smooth">
       {/* === Hero Section === */}
-      <Hero3D_StoryScroll />
+      <Hero3D_StoryScroll key={pathname} />
 
       {/* === About === */}
       <section
@@ -44,25 +47,19 @@ export default function HomePage() {
         </ScrollReveal>
       </section>
 
-   {/* === Vision セクション === */}
-<section className="relative py-48 px-6 text-center text-white">
-  <ScrollReveal index={3}>
-    <h2 className="text-5xl font-extrabold mb-8 bg-gradient-to-r from-pink-500 to-indigo-500 bg-clip-text text-transparent">
-      Vision
-    </h2>
-    <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
-      テクノロジーとアートの境界をなくし、<br />
-      “感じるWeb” を創り出す。<br />
-      私たちは表現者として、常に新しい体験を追い求めています。
-    </p>
-  </ScrollReveal>
-</section>
-
-
-      {/* === Footer === */}
-      <footer className="text-center py-10 text-gray-500 text-sm border-t border-white/10">
-        © {new Date().getFullYear()} LIT STUDIO — All Rights Reserved.
-      </footer>
+      {/* === Vision === */}
+      <section className="relative py-48 px-6 text-center text-white">
+        <ScrollReveal index={3}>
+          <h2 className="text-5xl font-extrabold mb-8 bg-gradient-to-r from-pink-500 to-indigo-500 bg-clip-text text-transparent">
+            Vision
+          </h2>
+          <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
+            テクノロジーとアートの境界をなくし、<br />
+            “感じるWeb” を創り出す。<br />
+            私たちは表現者として、常に新しい体験を追い求めています。
+          </p>
+        </ScrollReveal>
+      </section>
     </main>
   );
 }
